@@ -134,6 +134,7 @@ return packer.startup(function(use)
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
+			---@diagnostic disable-next-line: lowercase-global
 			opts = {}
 			-- Other blankline configuration here
 			require("ibl").setup(require("indent-rainbowline").make_opts(opts))
@@ -142,6 +143,9 @@ return packer.startup(function(use)
 			"TheGLander/indent-rainbowline.nvim",
 		},
 	})
+
+	-- multiline cursor
+	use("mg979/vim-visual-multi")
 
 	-- github copilot
 	use({ "github/copilot.vim", branch = "release" })

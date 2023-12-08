@@ -28,7 +28,23 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tabl keymaps
 
+-- For moving lines down with Option + j
+keymap.set("n", "<A-j>", [[:m .+1<CR>==]], { desc = "Move line down" })
+keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down" })
+keymap.set("x", "<A-j>", [[:m '>+1<CR>gv=gv]], { desc = "Move line down" })
+
+-- For moving lines up with Option + k
+keymap.set("n", "<A-k>", [[:m .-2<CR>==]], { desc = "Move line up" })
+keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move line up" })
+keymap.set("x", "<A-k>", [[:m '>-2<CR>gv=gv]], { desc = "Move line up" })
+
 -- plugin keymaps
+-- Define a function to call the LSP format command
+local function lsp_format()
+	vim.lsp.buf.format()
+end
+-- format
+keymap.set("n", "<leader>fm", lsp_format, { desc = "Format current buffer" })
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 
