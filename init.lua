@@ -1,9 +1,11 @@
+vim.env.GIT_EDITOR = "nvim"
 require("dobregon.plugins-setup")
 require("dobregon.core.options")
 require("dobregon.core.keymaps")
 require("dobregon.core.colorscheme")
 require("dobregon.plugins.comment")
 require("dobregon.plugins.nvim-tree")
+require("dobregon.plugins.nvim-treesitter")
 require("dobregon.plugins.lualine")
 require("dobregon.plugins.telescope")
 require("dobregon.plugins.nvim-cmp")

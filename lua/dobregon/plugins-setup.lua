@@ -19,6 +19,13 @@ vim.cmd([[
   augroup end
 ]])
 
+-- Run types inside vim with :make and :copen
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "typescript", "typescriptreact" },
+	command = "compiler tsc | setlocal makeprg=npx\\ tsc\\ --pretty\\ false",
+	--  group = 'strdr4605',
+})
+
 -- try to import packer
 local status, packer = pcall(require, "packer")
 if not status then
@@ -29,6 +36,15 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	-- lua functions that many plugins use
 	use("nvim-lua/plenary.nvim")
+
+	-- Harpoon to save and jump to project directories
+	use({
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+		},
+	})
 
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
 
@@ -59,7 +75,21 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.4",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		},
+		config = function()
+			local telescope = require("telescope")
+
+			-- first setup telescope
+			telescope.setup({
+				-- your config
+			})
+
+			-- then load the extension
+			telescope.load_extension("live_grep_args")
+		end,
 	})
 
 	-- autocompletion
@@ -117,10 +147,11 @@ return packer.startup(function(use)
 	-- treesitter configuration
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
+		run = ":TSUpdate",
+		-- run = function()
+		-- local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+		-- ts_update()
+		-- end,
 	})
 
 	-- auto closing
@@ -129,6 +160,8 @@ return packer.startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+	-- use to fix git conflicts with a better UI - git mergetool
+	use("whiteinge/diffconflicts")
 
 	-- indent rainbow (like vscode)
 	use({
@@ -149,6 +182,9 @@ return packer.startup(function(use)
 
 	-- github copilot
 	use({ "github/copilot.vim", branch = "release" })
+
+	-- jest
+	use("mattkubej/jest.nvim")
 
 	if packer_bootstrap then
 		packer.sync()

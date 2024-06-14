@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/howdy/.cache/nvim/packer_hererocks/2.1.1700008891/share/lua/5.1/?.lua;/Users/howdy/.cache/nvim/packer_hererocks/2.1.1700008891/share/lua/5.1/?/init.lua;/Users/howdy/.cache/nvim/packer_hererocks/2.1.1700008891/lib/luarocks/rocks-5.1/?.lua;/Users/howdy/.cache/nvim/packer_hererocks/2.1.1700008891/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/howdy/.cache/nvim/packer_hererocks/2.1.1700008891/lib/lua/5.1/?.so"
+local package_path_str = "/Users/howdy/.cache/nvim/packer_hererocks/2.1.1703358377/share/lua/5.1/?.lua;/Users/howdy/.cache/nvim/packer_hererocks/2.1.1703358377/share/lua/5.1/?/init.lua;/Users/howdy/.cache/nvim/packer_hererocks/2.1.1703358377/lib/luarocks/rocks-5.1/?.lua;/Users/howdy/.cache/nvim/packer_hererocks/2.1.1703358377/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/howdy/.cache/nvim/packer_hererocks/2.1.1703358377/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  diffconflicts = {
+    loaded = true,
+    path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/diffconflicts",
+    url = "https://github.com/whiteinge/diffconflicts"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -123,6 +128,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  harpoon = {
+    loaded = true,
+    path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
   },
   ["indent-blankline.nvim"] = {
     config = { "\27LJ\2\ns\0\0\5\0\6\0\0144\0\0\0007\0\0\0006\0\1\0'\2\2\0B\0\2\0029\0\3\0006\2\1\0'\4\4\0B\2\2\0029\2\5\0026\4\0\0B\2\2\0A\0\0\1K\0\1\0\14make_opts\23indent-rainbowline\nsetup\bibl\frequire\topts\0" },
@@ -134,6 +144,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/indent-rainbowline.nvim",
     url = "https://github.com/TheGLander/indent-rainbowline.nvim"
+  },
+  ["jest.nvim"] = {
+    loaded = true,
+    path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/jest.nvim",
+    url = "https://github.com/mattkubej/jest.nvim"
   },
   ["lspkind.nvim"] = {
     loaded = true,
@@ -222,7 +237,13 @@ _G.packer_plugins = {
     path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
+  ["telescope-live-grep-args.nvim"] = {
+    loaded = true,
+    path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
+    url = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
+  },
   ["telescope.nvim"] = {
+    config = { "\27LJ\2\ne\0\0\4\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\1\2\0004\3\0\0B\1\2\0019\1\3\0'\3\4\0B\1\2\1K\0\1\0\19live_grep_args\19load_extension\nsetup\14telescope\frequire\0" },
     loaded = true,
     path = "/Users/howdy/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
@@ -260,6 +281,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\ne\0\0\4\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\1\2\0004\3\0\0B\1\2\0019\1\3\0'\3\4\0B\1\2\1K\0\1\0\19live_grep_args\19load_extension\nsetup\14telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 try_loadstring("\27LJ\2\ns\0\0\5\0\6\0\0144\0\0\0007\0\0\0006\0\1\0'\2\2\0B\0\2\0029\0\3\0006\2\1\0'\4\4\0B\2\2\0029\2\5\0026\4\0\0B\2\2\0A\0\0\1K\0\1\0\14make_opts\23indent-rainbowline\nsetup\bibl\frequire\topts\0", "config", "indent-blankline.nvim")

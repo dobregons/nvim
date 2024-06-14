@@ -35,3 +35,6 @@ nvimtree.setup({
 		},
 	},
 })
+
+-- Change threshold for resizing the windowj
+vim.g.nvim_tree_resize_threshold = 800 -- Adjust the number as needed

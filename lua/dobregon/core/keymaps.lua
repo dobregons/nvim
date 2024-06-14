@@ -2,6 +2,12 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
+local harpoon = require("harpoon")
+
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+
 -- general keymaps
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
@@ -57,6 +63,7 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in 
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>") -- find string in current working directory with additional arguments using ripgrep
 
 -- telescope git commands (not on youtube nvim video)
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
@@ -67,3 +74,35 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
 
+-- harpoon keymaps
+keymap.set("n", "<leader>a", function()
+	harpoon:list():add()
+end)
+keymap.set("n", "<C-e>", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
+
+keymap.set("n", "<C-d>", function()
+	harpoon:list():remove()
+end)
+
+keymap.set("n", "<C-h>", function()
+	harpoon:list():select(1)
+end)
+keymap.set("n", "<C-t>", function()
+	harpoon:list():select(2)
+end)
+keymap.set("n", "<C-n>", function()
+	harpoon:list():select(3)
+end)
+keymap.set("n", "<C-s>", function()
+	harpoon:list():select(4)
+end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+keymap.set("n", "<C-S-P>", function()
+	harpoon:list():prev()
+end)
+keymap.set("n", "<C-S-N>", function()
+	harpoon:list():next()
+end)
