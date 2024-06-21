@@ -26,6 +26,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	--  group = 'strdr4605',
 })
 
+-- Fix issue with folding and telescope
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = { "*" },
+	command = "normal zx zR",
+})
+
 -- try to import packer
 local status, packer = pcall(require, "packer")
 if not status then
@@ -47,6 +53,7 @@ return packer.startup(function(use)
 	})
 
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
+	use("Mofiqul/dracula.nvim") -- dracula colorscheme - optional
 
 	-- tmux & split window navigation
 	use("christoomey/vim-tmux-navigator")
@@ -185,6 +192,14 @@ return packer.startup(function(use)
 
 	-- jest
 	use("mattkubej/jest.nvim")
+
+	-- fold unfold
+	use({
+		"kevinhwang91/nvim-ufo",
+		requires = {
+			{ "kevinhwang91/promise-async" },
+		},
+	})
 
 	if packer_bootstrap then
 		packer.sync()

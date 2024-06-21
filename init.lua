@@ -1,7 +1,7 @@
 vim.env.GIT_EDITOR = "nvim"
+
 require("dobregon.plugins-setup")
 require("dobregon.core.options")
-require("dobregon.core.keymaps")
 require("dobregon.core.colorscheme")
 require("dobregon.plugins.comment")
 require("dobregon.plugins.nvim-tree")
@@ -16,3 +16,6 @@ require("dobregon.plugins.lsp.null-ls")
 require("dobregon.plugins.autopairs")
 require("dobregon.plugins.treesitter")
 require("dobregon.plugins.gitsigns")
+require("dobregon.plugins.nvim-ufo")
+-- Always put this at the bottom
+require("dobregon.core.keymaps")
