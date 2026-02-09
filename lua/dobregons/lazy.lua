@@ -20,3 +20,6 @@ require("lazy").setup({ { import = "dobregons.plugins" }, { import = "dobregons.
     notify = false,
   },
 })
+
+-- Set node version for copilot plugin
+vim.g.copilot_node_command = "~/.nvm/versions/node/v20.19.0/bin/node"
