@@ -56,3 +56,7 @@ vim.opt.smartindent = true
 vim.opt.swapfile = false
 
 -- opt.iskeyword:append("-") -- consider - as part of the word
+
+-- Folding
+vim.opt.foldmethod = "indent" -- or "expr" for treesitter-based folding
+vim.opt.foldlevel = 99 -- start with all folds open

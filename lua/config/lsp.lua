@@ -1,6 +1,9 @@
 local M = {}
 
 function M.setup()
+  -- Set LSP log level to ERROR only to prevent large log files
+  vim.lsp.set_log_level("ERROR")
+
   -- Configure diagnostics
   vim.diagnostic.config({
     virtual_text = true,
