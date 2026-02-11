@@ -18,6 +18,8 @@ return {
       { "<leader>b", group = "Buffers" },
       { "<leader>f", group = "Files" },
       { "<leader>c", group = "Code" },
+      { "<leader>l", group = "LSP" },
+      { "<leader>q", group = "Quickfix" },
       { "<leader>r", group = "Refactor" },
       { "g", group = "Go to" },
       { "[", group = "Previous" },

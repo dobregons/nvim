@@ -49,9 +49,7 @@ M.setup = function()
             vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, { buffer = args.buf, desc = "Previous diagnostic" })
             vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, { buffer = args.buf, desc = "Next diagnostic" })
             vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { buffer = args.buf, desc = "Show diagnostic" })
-            vim.keymap.set("n", "<leader>fm", function()
-                vim.lsp.buf.format({ async = true })
-            end, { buffer = args.buf, desc = "Format document" })
+            -- Note: <leader>lf formatting is handled by conform.nvim in lua/plugins/conform.lua
         end,
     })
 
