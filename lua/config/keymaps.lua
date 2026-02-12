@@ -20,6 +20,29 @@ M.setup = function()
 	-- quit!
 	vim.keymap.set("n", "<leader>qq", "<Cmd>:qa<cr>")
 
+	-- Fastmod command for search and replace
+	vim.api.nvim_create_user_command("Fastmod", function(opts)
+		local args = vim.split(opts.args, " ")
+		if #args < 2 then
+			vim.notify("Usage: :Fastmod <search> <replace> [options]", vim.log.levels.ERROR)
+			return
+		end
+		local search = args[1]
+		local replace = args[2]
+		local extra_args = ""
+		if #args > 2 then
+			extra_args = " " .. table.concat(args, " ", 3)
+		end
+		-- Use terminal for interactive mode or add --accept-all for non-interactive
+		if opts.bang then
+			-- With !, run non-interactively
+			vim.cmd("!" .. "fastmod --accept-all " .. search .. " " .. replace .. extra_args)
+		else
+			-- Without !, run in terminal for interactive mode
+			vim.cmd("terminal fastmod " .. search .. " " .. replace .. extra_args)
+		end
+	end, { nargs = "+", bang = true, desc = "Run fastmod for search/replace (use ! for non-interactive)" })
+
 	-- buffer
 	vim.keymap.set("n", "<leader>bd", "<Cmd>bd<cr>", { desc = "Close buffer" })
 
