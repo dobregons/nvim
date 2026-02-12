@@ -60,3 +60,7 @@ vim.opt.swapfile = false
 -- Folding
 vim.opt.foldmethod = "indent" -- or "expr" for treesitter-based folding
 vim.opt.foldlevel = 99 -- start with all folds open
+
+-- Timeout settings for key mappings
+-- vim.opt.timeoutlen = 1000 -- Time in ms to wait for a mapped sequence to complete (default 1000)
+-- vim.opt.ttimeoutlen = 50 -- Time in ms to wait for a key code sequence to complete
