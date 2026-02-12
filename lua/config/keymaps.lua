@@ -11,6 +11,12 @@ M.setup = function()
 	vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 	vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
+	-- navigate splits with Ctrl-[hjkl]
+	vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Navigate to left split" })
+	vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Navigate to bottom split" })
+	vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Navigate to top split" })
+	vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Navigate to right split" })
+
 	-- quit!
 	vim.keymap.set("n", "<leader>qq", "<Cmd>:qa<cr>")
 
