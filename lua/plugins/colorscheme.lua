@@ -21,7 +21,7 @@ return {
 			},
 			custom_highlights = function(colors)
 				return {
-					LineNr = { fg = colors.peach }, -- Change line number color
+					LineNr = { fg = colors.subtext0 }, -- Change line number color
 					CursorLineNr = { fg = colors.yellow }, -- Change current line number color
 					-- Number = { fg = colors.red }, -- This is for numeric literals in code
 				}
